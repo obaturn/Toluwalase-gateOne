@@ -1,0 +1,6 @@
+const(calculateYears from 'TaskOne'
+test(get the birthdate and return age" , () => {
+let oldday = December 11 , 2022 23:15:20
+let currentDay = new Date();
+let result = getYears("January 1 , 2022 23:15:20" , new Date());
+expect(result).toBe(1.41644);

@@ -1,4 +1,5 @@
-public class TaskOne {
+public class TaskOne
+ {
 
 	public static void main(String [] args){
 	
@@ -8,6 +9,10 @@ public class TaskOne {
 	public static boolean atmCardNumber(int cardNumber){
 
 	System.out.println("enter the number of your atm card with an hyphen selected n diffrences of four digit number each");
+	
+	System.out.println("enter the Atm card number you wish to enter");
+
+	int userInput = input.nextInt();
 
 	int lengthCardNum = 16;
 
@@ -38,10 +43,12 @@ public class TaskOne {
 		System.out.print(invalid)
 		}
 
-System.out.println("enter the Atm card number you wish to enter");
-
-int userInput = input.nextInt();
-
 String valueChanger = String.valueOf(userInput);
+
+int count = 0;
+
+for( ; count <= lengthCardNum ; count++){
+  
+}
 
 }
