@@ -1,31 +1,45 @@
 import java.util.Scanner;
 
-	public class Menstration App {
+	public class MenstrationApp {
 
 	public static void main(String [] args){
 
-Scanner input = new Scanner(System.in);
+	Scanner input = new Scanner(System.in);
 
-	int cycleLength;
+	System.out.println("welcome to the month of your menstration");
 
-	int menstrationLength;
+	int menstrationLength = 0;
 
-	int currentDay;
+	int periodLength = 0;
 
-System.out.println("welcome to the  month of your menstration cycle");
+	System.out.println("please enter the details we need to know about your menstration circe");
 
-System.out.println("enter the last day you saw your mensration cycle last in days ");
+	System.out.println(enter the menstration length of your menstration in days);
 
-cylcleLength = input.nextInt();
+	cycleLength = input.nextInt();
 
-System.out.println("Enter the average cylcle of your menstration");
+	System.out.println(enter the duration cycle length of your menstration in days);
 
-menstrationLength = input.nextInt();
+	periodLength = input.nextInt();
 
-System.out.println("Enter the current day of your menstration");
+		int cycleTime = cycleLength - periodLength;
 
-currentDay = input.nextInt();
+	int fertileStart = cycleTime / 14 ;
 
-int nextMenstrationCycle = (currentDay + cycleLength -1) % cyclelength +1;
-  
-int flow date = nextMenstrationCycle - (cycleLength / 2) 
+	System.out.println(" the fertile start 14 days before the next period");
+
+	int fertileEnd = cycleTime - 10;
+
+System.out.println("the fertile end 10 days before the next period occour");
+
+System.out.println("=========================================/n");
+
+System.out.println("the menstration cycle length:\t" + cycleLength + "\t days");
+
+System.out.println("the duration cycle length:\t" + periodLength + "\t days");
+
+System.out.println("the cycle time is :\t" + cycleTime + "\t days");
+
+System.out.println("the fertile is: (ovaluation period) starts on day \t" fertileStart + fertileEnd);
+}
+}
