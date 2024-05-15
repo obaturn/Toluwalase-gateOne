@@ -1,5 +1,7 @@
-const prompt =  required (prompt - sync)();
+const prompt = require("prompt-sync")();
+
 const MyArray = ["firstNameArray" , "secondNameArray" , "phoneNumberArray"]
+
 String prompt = """
 1 -> Add Contact
 2 -> Remove Contact
@@ -8,4 +10,4 @@ String prompt = """
 5 -> Edit  Contact
 	""";
 console.log(prompt);
-
+userInput = prompt("select any of the options you see")();
