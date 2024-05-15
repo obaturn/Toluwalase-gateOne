@@ -51,7 +51,7 @@ public class PhoneBookApp {
                     break;
 
                 case 2:
-                    System.out.println("WELCOME TO REMOVE CONTACT");
+                      System.out.println("WELCOME TO REMOVE CONTACT");
                     if (!firstNameArray.isEmpty()) {
                         System.out.println("1  Remove with first name or 2  Remove with last name: ");
                         String userChoice = input.nextLine();
