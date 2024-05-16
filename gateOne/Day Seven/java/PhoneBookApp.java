@@ -81,7 +81,7 @@ public class PhoneBookApp {
                                     phoneNumberArray.remove(index);
                                     System.out.println("Contact removed successfully.");
                                 } else {
-                                    System.out.println("Contact not found.");
+                                      System.out.println("Contact not found.");
                                 }
                                 break;
 
