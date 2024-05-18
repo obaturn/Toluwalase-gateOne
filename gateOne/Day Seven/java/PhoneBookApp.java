@@ -1,27 +1,30 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PhoneBookApp {
 
-    static ArrayList<String> firstNameArray = new ArrayList<String>();
-    static ArrayList<String> secondNameArray = new ArrayList<String>();
-    static ArrayList<String> phoneNumberArray = new ArrayList<String>();
+    static ArrayList<String> firstNameArray = new ArrayList<>();
+    static ArrayList<String> secondNameArray = new ArrayList<>();
+    static ArrayList<String> phoneNumberArray = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         while (true) {
+            System.out.println("WELCOME TO OUR PHONE BOOK APP");
             String prompt = """
-                    1 -> Add Contact
-                    2 -> Remove Contact
-                    3 -> Find Contact By Phone Number
-                    4 -> Find Contact By Last Name
-                    5 -> Edit Contact
-                    6 -> Exit
-                    choose your option
-                    """;
+            Pls Choose  From The Options Selected Below:
+                1 -> Add Contact
+                2 -> Remove Contact
+                3 -> Find Contact By Phone Number
+                4 -> Find Contact By Last Name
+                5 -> Edit Contact
+                6 -> Exit
+                
+                """;
 
             System.out.println(prompt);
+
             int userInput = input.nextInt();
             input.nextLine();
 
@@ -47,13 +50,17 @@ public class PhoneBookApp {
                         System.out.println("Contact added successfully.");
 
                         System.out.println("Do you want to add another contact? (yes/no)");
-                    } while (input.nextLine().equalsIgnoreCase("yes"));
+                        String response = input.nextLine();
+                        if (!response.equalsIgnoreCase("yes")) {
+                            break;
+                        }
+                    } while (true);
                     break;
 
                 case 2:
-                      System.out.println("WELCOME TO REMOVE CONTACT");
+                    System.out.println("WELCOME TO REMOVE CONTACT");
                     if (!firstNameArray.isEmpty()) {
-                        System.out.println("1  Remove with first name or 2  Remove with last name: ");
+                        System.out.println("1 Remove with first name or 2 Remove with last name: ");
                         String userChoice = input.nextLine();
 
                         switch (userChoice) {
@@ -63,8 +70,6 @@ public class PhoneBookApp {
                                 int index = firstNameArray.indexOf(contactRemove);
                                 if (index != -1) {
                                     firstNameArray.remove(index);
-                                    secondNameArray.remove(index);
-                                    phoneNumberArray.remove(index);
                                     System.out.println("Contact removed successfully.");
                                 } else {
                                     System.out.println("Contact not found.");
@@ -77,16 +82,14 @@ public class PhoneBookApp {
                                 index = secondNameArray.indexOf(contactLastRemove);
                                 if (index != -1) {
                                     firstNameArray.remove(index);
-                                    secondNameArray.remove(index);
-                                    phoneNumberArray.remove(index);
                                     System.out.println("Contact removed successfully.");
                                 } else {
-                                      System.out.println("Contact not found.");
+                                    System.out.println("Contact not found.");
                                 }
                                 break;
 
                             default:
-                                System.out.println("Invalid choice pls try to select the right own");
+                                System.out.println("Invalid choice, please select the correct option.");
                         }
                     } else {
                         System.out.println("Phone book is empty.");
@@ -99,9 +102,11 @@ public class PhoneBookApp {
                         System.out.print("Enter the phone number contact you want to find: ");
                         String findContact = input.nextLine();
                         if (phoneNumberArray.contains(findContact)) {
-                            System.out.println("The contact " + findContact + " is found.");
+                            int index = phoneNumberArray.indexOf(findContact);
+                            System.out.println("The contact with phone number " + findContact + " is found: " +
+                                    firstNameArray.get(index) + " " + secondNameArray.get(index));
                         } else {
-                            System.out.println("The contact " + findContact + " not found.");
+                            System.out.println("The contact with phone number " + findContact + " not found.");
                         }
                     } else {
                         System.out.println("The Phone book is empty.");
@@ -111,13 +116,14 @@ public class PhoneBookApp {
                 case 4:
                     System.out.println("WELCOME TO FIND CONTACT BY LAST NAME");
                     if (!secondNameArray.isEmpty()) {
-                        System.out.println("Enter the last name you want to find");
+                        System.out.println("Enter the last name you want to find: ");
                         String customerLastName = input.nextLine();
-
                         if (secondNameArray.contains(customerLastName)) {
-                            System.out.println("The contact " + customerLastName + " is found");
+                            int index = secondNameArray.indexOf(customerLastName);
+                            System.out.println("The contact with last name " + customerLastName + " is found: " +
+                                    firstNameArray.get(index) + " " + phoneNumberArray.get(index));
                         } else {
-                            System.out.println("The contact " + customerLastName + " is not found");
+                            System.out.println("The contact with last name " + customerLastName + " is not found.");
                         }
                     } else {
                         System.out.println("The Phone book is empty.");
@@ -127,40 +133,55 @@ public class PhoneBookApp {
                 case 5:
                     System.out.println("WELCOME TO EDIT CONTACT");
                     if (!firstNameArray.isEmpty()) {
-                        System.out.println("Edit the first name you wish to edit:");
+                        System.out.println("Enter the first name you wish to edit:");
                         String firstNameEdit = input.nextLine();
-
                         if (firstNameArray.contains(firstNameEdit)) {
-                            System.out.println("The first name " + firstNameEdit + " has been changed successfully");
+                            int index = firstNameArray.indexOf(firstNameEdit);
+                            System.out.println("Enter the new first name: ");
+                            String newFirstName = input.nextLine();
+                            firstNameArray.set(index, newFirstName);
+                            System.out.println("First name has been changed successfully.");
                         } else {
-                            System.out.println("The first name " + firstNameEdit + " cannot be found");
+                            System.out.println("First name not found.");
                         }
                     }
-                    
+
                     if (!secondNameArray.isEmpty()) {
-                        System.out.println("Edit the last name you wish to edit:");
-                        String secondNameEdit = input.nextLine();
-                        if (secondNameArray.contains(secondNameEdit)) {
-                            System.out.println("The last name " + secondNameEdit + " has been changed successfully");
+                        System.out.println("Enter the last name you wish to edit:");
+                        String lastNameEdit = input.nextLine();
+                        if (secondNameArray.contains(lastNameEdit)) {
+                            int index = secondNameArray.indexOf(lastNameEdit);
+                            System.out.println("Enter the new last name: ");
+                            String newLastName = input.nextLine();
+                            secondNameArray.set(index, newLastName);
+                            System.out.println("Last name has been changed successfully.");
                         } else {
-                            System.out.println("The last name " + secondNameEdit + " was not found");
+                            System.out.println("Last name not found.");
                         }
                     }
-                    
+
                     if (!phoneNumberArray.isEmpty()) {
                         System.out.println("Enter the phone number you wish to edit:");
                         String numberEdit = input.nextLine();
                         if (phoneNumberArray.contains(numberEdit)) {
-                            System.out.println("The phone number " + numberEdit + " has been successfully edited");
+                            int index = phoneNumberArray.indexOf(numberEdit);
+                            System.out.println("Enter the new phone number: ");
+                            String newNumber = input.nextLine();
+                            while (newNumber.length() != 11) {
+                                System.out.println("The number you enter has to be 11 digits. Please enter a valid one.");
+                                newNumber = input.nextLine();
+                            }
+                            phoneNumberArray.set(index, newNumber);
+                            System.out.println("Phone number has been changed successfully.");
                         } else {
-                            System.out.println("The phone number " + numberEdit + " was not found, so it can't be edited");
+                            System.out.println("Phone number not found.");
                         }
                     }
                     break;
 
                 case 6:
-                    System.out.println("Press 6 to exit");
-                    break;
+                    System.out.println("Thanks for exiting our app. Hope you enjoyed our phone app.");
+                    System.exit(0);
 
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
